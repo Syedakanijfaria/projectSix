@@ -12,34 +12,20 @@
 </head>
 
 <body>
-    <!-- searching input field  -->
-    <section class="container my-4">
-        <div class="d-flex">
-            <input type="text" id="search-input" class="form-control me-2" placeholder="Bangladesh">
-            <button id="search-btn" class="btn btn-info">search</button>
-        </div>
-        <hr />
-    </section>
-    <!-- books -->
-    <section class="container">
-        <div class="row">
-            <div class="col-md-3 col-12 align-items-center">
-                <!-- <div class="d-flex"> -->
-                <!-- cover image -->
-                <div class="p-4">
-                    <img src="Flag-Bangladesh.jpg" alt="" class="mw-50 h-auto">
-                </div>
-                <!-- title and details -->
-                <div class="p-4 d-felx justify-content-between align-items-center text-md-center">
-                    <h1>Javascript</h1>
-                    <button class="btn btn-info">details....</button>
-                </div>
+    <main>
+        <!-- searching input field  -->
+        <section class="container my-4">
+            <div class="d-flex">
+                <input type="text" id="search-input" class="form-control me-2">
+                <button onclick="searchBook()" id="search-btn" class="btn btn-info">search</button>
             </div>
+            <hr />
+        </section>
+        <!-- books searching result-->
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+
         </div>
-
-    </section>
-
-    <!-- <h1>world</h1> -->
+    </main>
     <script src="index.js"></script>
 </body>
 
