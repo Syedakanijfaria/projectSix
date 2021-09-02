@@ -1,4 +1,6 @@
-const searchBook = async () => {
+const errorFound = document.getElementById('error-message').style.display = 'none';
+
+const searchBook = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
     searchInput.value = '';
@@ -8,17 +10,17 @@ const searchBook = async () => {
     else {
         document.getElementById('total-result').style.display = 'block';
         const url = `https://openlibrary.org/search.json?q=${searchText}`;
-
-        // const res = await fetch(url);
-        // const data = await res.json()
-        // displaySearchResult(data)
         fetch(url)
             .then(res => res.json())
-            .then(data => displaySearchResult(data));
+            .then(data => displaySearchResult(data))
+            .catch(error => displayError(error));
     }
 }
 
-searchBook()
+const displayError = error => {
+    document.getElementById('error-message').style.display = 'block';
+}
+//searchBook()
 
 const displaySearchResult = data => {
     const { numFound, docs } = data
@@ -26,10 +28,11 @@ const displaySearchResult = data => {
     totalResult.textContent = '';
     // total search result
     document.getElementById('total').innerText = numFound;
+    document.getElementById('founded-book').innerText = data.docs.length;
 
     // books searching result
     docs.forEach(doc => {
-        console.log(doc);
+        //console.log(doc);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
