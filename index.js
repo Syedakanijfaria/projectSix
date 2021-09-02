@@ -1,6 +1,5 @@
 const errorFound = document.getElementById('error-message').style.display = 'none';
 
-// function, error calling and handling-------------
 const searchBook = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
