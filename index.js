@@ -1,9 +1,11 @@
 const errorFound = document.getElementById('error-message').style.display = 'none';
 
+// function, error calling and handling-------------
 const searchBook = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
     searchInput.value = '';
+
     if (searchText === '') {
         document.getElementById('total-result').style.display = 'none';
     }
@@ -17,27 +19,28 @@ const searchBook = () => {
     }
 }
 
+// error message-------------------------
 const displayError = error => {
     document.getElementById('error-message').style.display = 'block';
 }
-//searchBook()
 
+// display book details------------
 const displaySearchResult = data => {
     const { numFound, docs } = data
     const totalResult = document.getElementById('search-result');
     totalResult.textContent = '';
-    // total search result
+    // total search result--------------
     document.getElementById('total').innerText = numFound;
     document.getElementById('founded-book').innerText = data.docs.length;
 
-    // books searching result
+    // books searching result----------
     docs.forEach(doc => {
         //console.log(doc);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card">
-        <img  src="https://covers.openlibrary.org/b/id/${doc.cover_i}-M.jpg" class="card-img-top w-50 mx-auto" alt="">
+        <div class="card h-100">
+        <img  src="https://covers.openlibrary.org/b/id/${doc.cover_i}-M.jpg" class="card-img-top w-50 h-100 mx-auto" alt="">
             <div class="card-body">
                 <h5 class="card-title">Book name: ${doc.title}</h5>
                 <h5 class="card-title">Author Name: ${doc.author_name}</h5>
